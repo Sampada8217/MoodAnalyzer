@@ -25,17 +25,25 @@ public class MoodAnalyzerTest {
         MoodAnalyzer moodAnalyzer =new MoodAnalyzer(null);
         try {
 
-            ExpectedException expectedException = ExpectedException.none();
-            expectedException.expect(MoodAnalyzerException.class);
-            expectedException.expectMessage("There is no mood");
-            String mood2 = moodAnalyzer.analyzeMood();
-            Assert.assertEquals("HAPPY", mood2);
-        }catch(MoodAnalyzerException e)
-        {
-            e.printStackTrace();
+            //ExpectedException expectedException = ExpectedException.none();
+            //expectedException.expect(MoodAnalyzerException.class);
+            //expectedException.expectMessage("There is no mood");
+            moodAnalyzer.analyzeMood();
+        }catch(MoodAnalyzerException e){
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.ENTERED_NULL,e.type);
         }
 
+    }
 
+    @Test
+    public void CatchExceptionEmpty() throws MoodAnalyzerException {
+        MoodAnalyzer moodAnalyzer=new MoodAnalyzer(" ");
+        try{
+            moodAnalyzer.analyzeMood();
+        }catch (MoodAnalyzerException e)
+        {
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.ENTERED_EMPTY,e.type);
+        }
     }
 }
 

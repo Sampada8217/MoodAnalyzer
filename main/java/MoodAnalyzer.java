@@ -2,17 +2,20 @@ public class MoodAnalyzer {
     private String moodMessage;
 
     public MoodAnalyzer(String moodMessage) {
-        this.moodMessage=moodMessage;
+
+        this.moodMessage = moodMessage;
     }
 
-    public String analyzeMood()
-    {
-        if(moodMessage=="I am in Sad Mood")
+    public String analyzeMood() {
+        try
         {
+            if (moodMessage == "I am in Sad Mood") {
             return "SAD";
-        }
-        else
+            }
             return "HAPPY";
-    }
+         }catch (Exception NullPointerException)
+        {
+            return "HAPPY";
+        }
+}}
 
-}

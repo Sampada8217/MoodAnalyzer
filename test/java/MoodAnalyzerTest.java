@@ -19,5 +19,13 @@ public class MoodAnalyzerTest {
 
     }
 
+    @Test
+    public void CatchException() {
+        MoodAnalyzer moodAnalyzer =new MoodAnalyzer(null);
+        String mood2=moodAnalyzer.analyzeMood();
+        Assert.assertEquals("HAPPY",mood2);
+
+
     }
+}
 
